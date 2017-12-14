@@ -1,0 +1,17 @@
+{
+    "name": "galacticlabs/disable-compare-products",
+    "description": "Disable compare products functionality",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "MIT"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "GalacticLabs\\DisableCompareProducts\\": ""
+        }
+    }
+}
