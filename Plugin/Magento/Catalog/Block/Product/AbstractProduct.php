@@ -1,30 +1,25 @@
 <?php
-/**
- * Authors: Alex Gusev <alex@flancer64.com>
- * Since: 2018
- */
 
 namespace GalacticLabs\DisableCompareProducts\Plugin\Magento\Catalog\Block\Product;
 
-use GalacticLabs\DisableCompareProducts\Observer\LayoutLoadBefore as AnObserver;
+use GalacticLabs\DisableCompareProducts\Observer\LayoutLoadBefore;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class AbstractProduct
 {
-
     /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     * @var ScopeConfigInterface
      */
     private $scopeConfig;
 
-    public function __construct(
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-    )
+    public function __construct(ScopeConfigInterface $scopeConfig)
     {
         $this->scopeConfig = $scopeConfig;
     }
 
     /**
-     * Return 'null' if product comparision is disabled.
+     * Return 'null' for product compare url if product comparison is disabled. This deals with a number
+     * of the templates that rely on this being set to actually show the compare links.
      *
      * @param \Magento\Catalog\Block\Product\AbstractProduct $subject
      * @param string $result
@@ -34,11 +29,12 @@ class AbstractProduct
         \Magento\Catalog\Block\Product\AbstractProduct $subject,
         $result
     ) {
-        $disableCompare = $this->scopeConfig->getValue(AnObserver::DISABLE_COMPARE_CONFIG_PATH);
+        $disableCompare = $this->scopeConfig->getValue(LayoutLoadBefore::DISABLE_COMPARE_CONFIG_PATH);
 
         if($disableCompare){
-            $result=null;
+            $result = null;
         }
+
         return $result;
     }
 }
