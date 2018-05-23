@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="galacticlabs_disablew_compare_products"
+                type="GalacticLabs\DisableCompareProducts\Plugin\Magento\Catalog\Block\Product\AbstractProduct"
+                sortOrder="100" disabled="false"/>
+    </type>
+
+</config>
