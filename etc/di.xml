@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- ******* -->
+    <!-- PLUGINS -->
+    <!-- ******* -->
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <!--Disable product comparison link to prevent products compare link in new products widget. -->
+        <plugin name="galacticlabs_disable_compare_products"
+                type="GalacticLabs\DisableCompareProducts\Plugin\Magento\Catalog\Block\Product\AbstractProduct"
+                sortOrder="100" disabled="false"/>
+    </type>
+
+</config>
